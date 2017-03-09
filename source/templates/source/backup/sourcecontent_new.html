@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Source - Content{% endblock title %}
+
+{% block content %}
+<form class="w3-text-red w3-padding">
+<input type="checkbox" name="source_content" value="True"> Add Source
+</form>
+<div class="w3-border w3-border-color">
+	<div class="w3-center">	
+	<h1>Available Data: Web Link (RSS)</h1>
+	</div>
+{% for key, value in JSON.items %}
+	{% for key2, value2 in value.items %}
+	<div class="w3-row w3-sourcecontent">
+		<div class="w3-quarter w3-left w3-border-top">
+				<div class="">
+					<p style="text-align: center; padding-right:10%;">{{ key }}: {{ key2 }}</p>
+				</div>
+		</div>
+		<div class="w3-threequarter w3-right w3-border-left w3-border-top">
+			<div class="" style="text-align:center;">
+				<p class="w3-padding-left w3-padding-right">{{ value2 }}</p>
+			</div>				
+		</div>
+	</div>
+	{% endfor %}
+	<div class="w3-row w3-sourcecontent">
+		<div class="w3-quarter w3-left w3-border-top">
+			<p style="text-align: center; padding-right:10%;">{{ key }}</p>
+		</div>
+		<div class="w3-threequarter w3-right w3-border-left w3-border-top">
+			<p class="w3-padding-left w3-padding-right">{{ value }}</p>
+		</div>
+	</div>
+{% endfor %}
+</div>
+{% endblock content %}

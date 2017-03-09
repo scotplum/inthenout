@@ -1,0 +1,82 @@
+body {
+    background-color: ghostwhite;
+    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+}
+
+.w3-logo  { 
+    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    letter-spacing: 3px;
+    font-weight: bold;
+    text-align: center;
+    margin: 5% 0;
+	font-size: 180%;
+}
+
+.w3-nav {
+    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    letter-spacing: 2px;
+    font-variant: small-caps;
+    font-size: 180%;
+    margin-right: 3%;
+    color: #3369b8;
+}
+
+.w3-barnav{
+    background-color: ghostwhite;
+    margin: 0;
+    padding: 0;
+    border-bottom-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: #3369b8;   
+    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 	 
+}
+
+.w3-sidenavi {
+    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    letter-spacing: 4px;
+    font-size: 180%;
+    font-weight: bold;
+    padding: 0 5%;
+    margin: 1px 0;
+    text-align: center;
+}
+
+.w3-bold{
+	font-weight: bold;
+}
+
+.w3-mycolor {
+    background-color: #3369b8;
+}
+
+.w3-bordercolor{
+	border-color: #3369b8;
+}
+
+.w3-workspace{
+    background-color: ghostwhite;
+    font-size: 120%;
+    text-align: left;
+    color: #3369b8;   
+}
+
+.w3-sidenavlinks{
+    text-align: center;
+    margin: 0;
+    padding: 1px;
+    list-style-type: none;
+    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    letter-spacing: 1px;
+    font-variant: small-caps;
+    font-size: 90%;
+    text-decoration: none;
+}
+
+.w3-hidden{
+    display:none;
+    }
+
+.w3-sourcecontent{
+    text-align:left;
+    font-size: 70%;
+}

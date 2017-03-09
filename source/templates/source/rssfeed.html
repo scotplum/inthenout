@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Source - RSS Feed{% endblock title %}
+
+{% block content %}
+<form class="w3-text-red w3-padding">
+<input type="checkbox" name="source_rssfeed" value="True"> Add Source
+</form>
+<div class="w3-border w3-border-color">
+	<div class="w3-center">	
+	<h1>Available Web Link / RSS Feed Data</h1>
+	</div>
+	<div class=" w3-sourcecontent w3-slim">
+		<div class="w3-row-padding w3-border-top">
+				<div class="w3-quarter">
+					<p>Feed Title</p>
+				</div>
+				<div class="w3-threequarter w3-border-left">
+					<p>{{ JSON.feed_title }}</p>
+				</div>
+		</div>
+		<div class="w3-row-padding">
+				<div class="w3-quarter">
+					<p>Feed Description</p>
+				</div>
+				<div class="w3-threequarter w3-border-left">
+					<p>{{ JSON.feed_description }}</p>
+				</div>
+		</div>
+		<div class="w3-row-padding">
+				<div class="w3-quarter">
+					<p>Item Title</p>
+				</div>
+				<div class="w3-threequarter w3-border-left">
+					<p>{{ JSON.item_title }}</p>
+				</div>
+		</div>
+		<div class="w3-row-padding">
+				<div class="w3-quarter">
+					<p>Item Link</p>
+				</div>
+				<div class="w3-threequarter w3-border-left">
+					<p>{{ JSON.item_link }}</p>
+				</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
+\

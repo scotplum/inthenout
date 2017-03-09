@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>inthenOut - {% block title %}Welcome!{% endblock title %}</title>
+        <meta charset="uft-8">
+        <meta name="description" content="inthenOut description to come soon..">
+        <meta name="author" content="Scott Plumbtree">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+        <script src="https://www.w3schools.com/lib/w3.js"></script>
+        {% load static %}
+        <link rel="stylesheet" href={% static "inthenout/style.css" %}>
+    </head>
+	
+    <body>
+    
+        <div class="w3-right w3-container w3-threequarter">
+            <div class="w3-navbar w3-barnav">
+                {% block topbar %}
+                <a href="/emailupdate/" class="w3-bar-item w3-nav w3-right w3-padding-medium w3-section w3-hover-opacity">login</a>
+				<a href="/emailupdate/" class="w3-bar-item w3-nav w3-right w3-padding-medium w3-section w3-hover-opacity">register</a>
+				<a href="/emailupdate/" class="w3-bar-item w3-nav w3-right w3-padding-medium w3-section w3-hover-opacity">update me</a>
+                {% endblock topbar %}
+            </div>
+            <div id="content" class="w3-workspace w3-padding-16">
+                {% block content %}
+                 
+                {% endblock content %}
+            </div>
+		</div>
+        <nav class="w3-left w3-sidenav w3-card-2 w3-mycolor w3-text-white w3-mobile w3-quarter" style="height:100%;">
+            <h1 class="w3-logo w3-text-shadow w3-padding-16">inthen&#10162;ut</h1>
+                <div>
+                    <div>
+                        <ul id="source" class="w3-opacity w3-margin-0 w3-padding-0">
+                        <h1 class="w3-sidenavi w3-hover-black" onclick="w3.toggleShow('#sourcelinks');">source</h1>
+                            <div id="sourcelinks" class="">
+                                {% block sidebar_source %}
+                                <a href="/source/" class="w3-sidenavlinks w3-hover-red">Add Source &#10162;</a>                                    
+                                {% endblock sidebar_source %}
+                            </div>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul id="collection" class="w3-opacity w3-margin-0 w3-padding-0 w3-border-top">
+                        <h1 class="w3-sidenavi w3-hover-black" onclick="w3.toggleShow('#collectlinks');">collect</h1>
+                            <div id="collectlinks" class="">
+                                {% block sidebar_collect %}
+                                <p class="w3-sidenavlinks w3-hover-red">Add Collection &#10162;</p>
+                                {% endblock sidebar_collect %}
+                            </div>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul id="output" class="w3-opacity w3-margin-0 w3-padding-0 w3-border-top">
+                        <h1 class="w3-sidenavi w3-hover-black" onclick="w3.toggleShow('#outputlinks');">output</h1>
+                            <div id="outputlinks" class="">
+                                {% block sidebar_output %}
+                                <p class="w3-sidenavlinks w3-hover-red">Add Output &#10162;</p>                                    
+                                {% endblock sidebar_output %}
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+        </nav>        
+        
+    </body>
+
+</html>
