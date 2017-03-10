@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render,  get_object_or_404
 import requests, datetime, feedparser
 
-def index(request):
-    context = {}
-    return render(request, 'source/index.html', context)	
+from .models import Source
 
+def index(request):
+	sources = Source.objects.all()
+	context = {'object_list':sources}
+	return render(request, 'source/index.html', context)
+	
 #Call Quotes API
 def quotes(request):
     url = 'http://quotes.rest/qod.json'
@@ -41,3 +44,7 @@ def sourcecontent(request):
     context['entries'] = url_parsed0
     context['feed'] = url_feed
     return render(request, 'source/sourcecontent.html', {'JSON': context})
+	
+def detail(request, source_id):
+	source = get_object_or_404(Source, pk=source_id)
+	return render(request, 'source/details.html', {'source': source})
