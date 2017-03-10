@@ -4,9 +4,15 @@ from django.db import models
 from django.utils import timezone
 
 class Source(models.Model):
-	source_name = models.CharField(max_length=30)
-	source_creation_date = models.DateTimeField('source creation date')
-	source_url = models.CharField(max_length=200)
+	name 			= models.CharField(max_length=30)
+	date_create 	= models.DateTimeField('source creation date')
+	url 			= models.CharField(max_length=200)
+	key 			= models.CharField(max_length=200)
+	secret 			= models.CharField(max_length=200)
+	oauth_version	= models.IntegerField(default=0)
+	url_call		= models.CharField(max_length=200)
+	rss_flag		= models.BooleanField(default=False)
+	
 	def __str__(self):
 		return self.source_name
 		return self.source_url
