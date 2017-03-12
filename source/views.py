@@ -34,7 +34,8 @@ def rssfeed(request):
     context["item_link"] = item_0_link
     return render(request, 'source/rssfeed.html', {'JSON': context})
 
-#Parse Source Content
+#Parse Source Content (THIS IS NOT IN USE..See Detail for current use)
+
 def sourcecontent(request):
     url = 'http://feeds.feedburner.com/TheWirecutter'
     url_parsed = feedparser.parse(url)
@@ -44,7 +45,15 @@ def sourcecontent(request):
     context['entries'] = url_parsed0
     context['feed'] = url_feed
     return render(request, 'source/sourcecontent.html', {'JSON': context})
+
 	
 def detail(request, source_id):
-	source = get_object_or_404(Source, pk=source_id)
-	return render(request, 'source/details.html', {'source': source})
+	source_object = Source.objects.get(pk=source_id)
+	url = source_object.url
+	url_parsed = feedparser.parse(url)
+	url_parsed0 = url_parsed.entries[0]
+	url_feed = url_parsed.feed
+	context = {}
+	context['entries'] = url_parsed0
+	context['feed'] = url_feed
+	return render(request, 'source/details.html', {'JSON': context})

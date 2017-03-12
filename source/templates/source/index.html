@@ -4,10 +4,12 @@
 
 {% block content %}
 
-<p>Select a Source...</p>
+<div class="">
+	<p>Select a Source...</p>
 	{% for source in object_list %}
 	<ul>
-		<li><a href="{% url 'source:detail' source.id %}">{{ source.name }}</a></li>
+		<li class="w3-sourcelinks"><a href="{% url 'source:detail' source.id %}">{{ source.name }}</a></li>
 	</ul>
 	{% endfor %}
+</div>
 {% endblock content %}

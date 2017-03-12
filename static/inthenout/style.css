@@ -80,3 +80,15 @@ body {
     text-align:left;
     font-size: 70%;
 }
+
+.w3-sourcelinks{
+    text-align: left;
+    margin: 0;
+    padding: 1px;
+    list-style-type: none;
+    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    letter-spacing: 1px;
+    font-variant: small-caps;
+    font-size: 90%;
+    text-decoration: none;
+}
