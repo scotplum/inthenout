@@ -84,11 +84,10 @@ body {
 .w3-sourcelinks{
     text-align: left;
     margin: 0;
-    padding: 1px;
+    padding: 0;
     list-style-type: none;
     font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
     letter-spacing: 1px;
-    font-variant: small-caps;
-    font-size: 90%;
+    font-size: 75%;
     text-decoration: none;
 }
