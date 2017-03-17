@@ -12,6 +12,7 @@ class Source(models.Model):
 	oauth_version	= models.IntegerField(default=0)
 	url_call		= models.CharField(max_length=200)
 	rss_flag		= models.BooleanField(default=False)
+	dict0_flag		= models.BooleanField(default=False)
 	
 	def __str__(self):
 		return self.name

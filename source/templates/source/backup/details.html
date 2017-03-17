@@ -12,18 +12,18 @@
 	</div>
 	<div class="w3-sourcecontent">
 		<div class="w3-center w3-border">
-		{% for key, value in JSON.items|dictsort:0 %}
+		{% for key, value in JSON.items %}
 			<div class="w3-row">
 				<div class=" w3-left w3-quarter">
-				<p class="" style="text-align:right; color: red; ">{{ key }}</p>
+				<p class="" style="text-align:right; font-weight: bold; ">{{ key }}</p>
 				</div>
 				<div class="w3-right w3-threequarter w3-padding-left w3-padding-right" style="text-align:left;">
 				<p>{{ value }}</p>
 				</div>
 			</div>
-			{% for key2, value2 in value.items|dictsort:0 %}
+			{% for key2, value2 in value.items %}
 				<div class="w3-row">
-					<div class="w3-quarter w3-left" style="text-align:right; color: red;">
+					<div class="w3-quarter w3-left" style="text-align:right; font-weight: bold;">
 					<p>{{ key }}.{{ key2 }}</p>
 					</div>
 					<div class="w3-threequarter w3-right w3-padding-left w3-padding-right" style="text-align:left;">
@@ -32,13 +32,26 @@
 				</div>
 				{% for key3, value3 in value2.items %}
 					<div class="w3-row">
-						<div class="w3-quarter w3-left" style="text-align:right; color: red;">
+						<div class="w3-quarter w3-left" style="text-align:right; font-weight: bold;">
 						<p>{{ key2 }}.{{ key3 }}</p>
 						</div>
 						<div class="w3-threequarter w3-right w3-padding-left w3-padding-right" style="text-align:left;">
 						<p>{{ value3 }}</p>
 						</div>
 					</div>
+				{% endfor %}
+			{% endfor %}
+		{% endfor %}
+		</div>
+		<div>
+		{% for key, value_list in JSON.items %}
+			{% for item in value_list %}
+				{% for key_2 in value %}
+				<div class="w3-row">
+					<div class="w3-threequarter w3-right">
+					<p>{{ key_2 }}</p>
+					</div>
+				</div>
 				{% endfor %}
 			{% endfor %}
 		{% endfor %}
