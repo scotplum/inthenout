@@ -13,6 +13,7 @@ class Source(models.Model):
 	url_call		= models.CharField(max_length=200)
 	rss_flag		= models.BooleanField(default=False)
 	dict0_flag		= models.BooleanField(default=False)
+	is_active		= models.BooleanField(default=True)
 	
 	def __str__(self):
-		return self.name
+		return self.name + "  (Is Active:" + str(self.is_active) + ")"

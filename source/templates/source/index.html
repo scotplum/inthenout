@@ -7,9 +7,11 @@
 <div class="">
 	<p>Select a Source...</p>
 	{% for source in object_list %}
-	<ul>
-		<li class="w3-sourcelinks"><a href="{% url 'source:detail' source.id %}">{{ source.name }}</a></li>
-	</ul>
+		{% if source.is_active is True%}
+		<ul>
+			<li class="w3-sourcelinks"><a href="{% url 'source:detail' source.id %}">{{ source.name }}</a></li>
+		</ul>
+		{% endif %}
 	{% endfor %}
 </div>
 {% endblock content %}
