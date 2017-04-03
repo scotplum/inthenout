@@ -6,5 +6,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^source/', include('source.urls')),
     url(r'^emailupdate/', include('emailupdate.urls')),
-    url(r'^', include('welcome.urls')),
+    url(r'^accounts/', include('allauth.urls')),
+    #url(r'^', include('welcome.urls')),
 ]
