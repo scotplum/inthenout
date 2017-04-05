@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome!!{% endblock title %}
+
+{% block content %}
+<div class="w3-workspace w3-border-bottom">
+	<div class="w3-container w3-center">
+		{% if request.user.is_authenticated %}Welcome {{ request.user.username }} to inthenOut!
+		{% else %}<a href="{% url django.contrib.auth.login %}">Login</a>{% endif %}
+	</div><br>
+	<div class="w3-container w3-workspace"><a href="/accounts/logout/" class="w3-right w3-padding-medium w3-section w3-hover-opacity">log me out</a></div>
+</div>
+{% endblock content %}

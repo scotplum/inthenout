@@ -40,12 +40,16 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+LOGIN_REDIRECT_URL = '/home/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Application definition
 
 INSTALLED_APPS = [
     'emailupdate',
     'source',
+    'home',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
