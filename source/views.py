@@ -1,5 +1,6 @@
 from django.shortcuts import render,  get_object_or_404
 import requests, datetime, feedparser
+from django.contrib.auth.decorators import login_required
 
 from .models import Source, Source_Variable
 
@@ -13,6 +14,7 @@ def index(request):
 	return render(request, 'source/index.html', context)
 
 #The function below parses RSS feeds and API calls	
+@login_required
 def detail(request, source_id):
 	#Assign variables
 	source_variable = []

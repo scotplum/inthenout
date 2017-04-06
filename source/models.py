@@ -2,6 +2,7 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 class Source(models.Model):
 	name 			= models.CharField(max_length=30)
@@ -28,3 +29,9 @@ class Source_Variable(models.Model):
 	def __str__(self):
 		return "{variable_name:" + self.variable_name + ",variable_value:" + self.variable_value + "}"
 		#return str(self.source) + " " + self.variable_name + " " + self.variable_value}
+		
+class Source_User(models.Model):
+	user 			= models.ForeignKey(User, on_delete=models.CASCADE)
+	source 			= models.ForeignKey(Source, on_delete=models.CASCADE)
+	date_created	= models.DateTimeField(auto_now_add=True)
+	is_active		= models.BooleanField(default=True)
