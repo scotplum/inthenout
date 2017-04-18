@@ -3,46 +3,54 @@
 {% block title %}Source - Available Data{% endblock title %}
 
 {% block content %}
-<form class="w3-text-red w3-padding">
-<input type="checkbox" name="source_content" value="True"> Add Source
-</form>
-<div class="w3-border w3-border-color">
-	<div class="w3-center w3-border w3-border-color">	
-	<h1>Available Data: {{ JSON.source_name }}</h1>
-	</div>
-	<div class="w3-sourcecontent">
-		<div class="w3-center w3-border">
-		{% for key, value in JSON.items|dictsort:0 %}
-			<div class="w3-row">
-				<div class=" w3-left w3-third">
-				<p class="" style="text-align:right; ">{{ key }}</p>
-				</div>
-				<div class="w3-right w3-twothird w3-padding-left w3-padding-right" style="text-align:left; color: red">
-				<p>{{ value }}</p>
-				</div>
-			</div>
-			{% for key2, value2 in value.items|dictsort:0 %}
+<div class="w3-barnav">
+	{% if su_check %}
+	<form class="w3-text-red w3-padding">
+	<button type="submit">Remove from my Sources</button>
+	</form>
+	{% else %}
+	<form class="w3-text-red w3-padding">
+	<button type="submit">Add to my Sources</button>
+	</form>
+	{% endif %}
+	<div class="w3-border w3-border-color">
+		<div class="w3-center w3-border w3-border-color">	
+		<h1>Available Data: {{ JSON.source_name }} </h1>
+		</div>
+		<div class="w3-sourcecontent">
+			<div class="w3-center w3-border">
+			{% for key, value in JSON.items|dictsort:0 %}
 				<div class="w3-row">
-					<div class="w3-third w3-left" style="text-align:right;">
-					<p>{{ key }}.{{ key2 }}</p>
+					<div class=" w3-left w3-third">
+					<p class="" style="text-align:right; ">{{ key }}</p>
 					</div>
-					<div class="w3-twothird w3-right w3-padding-left w3-padding-right" style="text-align:left; color: red">
-					<p>{{ value2 }}</p>
+					<div class="w3-right w3-twothird w3-padding-left w3-padding-right" style="text-align:left; color: red">
+					<p>{{ value }}</p>
 					</div>
 				</div>
-				{% for key3, value3 in value2.items %}
+				{% for key2, value2 in value.items|dictsort:0 %}
 					<div class="w3-row">
 						<div class="w3-third w3-left" style="text-align:right;">
-						<p>{{ key2 }}.{{ key3 }}</p>
+						<p>{{ key }}.{{ key2 }}</p>
 						</div>
 						<div class="w3-twothird w3-right w3-padding-left w3-padding-right" style="text-align:left; color: red">
-						<p>{{ value3 }}</p>
+						<p>{{ value2 }}</p>
 						</div>
 					</div>
+					{% for key3, value3 in value2.items %}
+						<div class="w3-row">
+							<div class="w3-third w3-left" style="text-align:right;">
+							<p>{{ key2 }}.{{ key3 }}</p>
+							</div>
+							<div class="w3-twothird w3-right w3-padding-left w3-padding-right" style="text-align:left; color: red">
+							<p>{{ value3 }}</p>
+							</div>
+						</div>
+					{% endfor %}
 				{% endfor %}
 			{% endfor %}
-		{% endfor %}
+			</div>
 		</div>
-	</div>
+	</div><br>
 </div>
 {% endblock content %}

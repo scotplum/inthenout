@@ -3,7 +3,7 @@
 {% block title %}Welcome!!{% endblock title %}
 
 {% block content %}
-<div class="w3-workspace w3-border-bottom">
+<div class="w3-workspace w3-barnav">
 	<div class="w3-center w3-sourcelinks">
 		{% if request.user.is_authenticated %}
 		<div class="w3-container">
@@ -30,6 +30,11 @@
 		{% else %}<a href="/accounts/login/">Please login</a> or <a href="/accounts/signup/">register</a>.
 		{% endif %}
 	</div><br>
-
+</div>
+<div>
+	<h2>Sources</h2>
+	{% for key, value in source.items %}
+		<p>{{ value }}</p>
+	{% endfor %}
 </div>
 {% endblock content %}

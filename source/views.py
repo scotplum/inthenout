@@ -2,7 +2,8 @@ from django.shortcuts import render,  get_object_or_404
 import requests, datetime, feedparser
 from django.contrib.auth.decorators import login_required
 
-from .models import Source, Source_Variable
+from .models import Source, Source_Variable, Source_User
+from django.contrib.auth.models import User
 
 from inthenout.utils import apicall
 
@@ -20,8 +21,10 @@ def detail(request, source_id):
 	source_variable = []
 	url_param = {}
 	url_dict = {}
+	user_object = request.user
 	source_object = Source.objects.get(pk=source_id)
 	source_var_check = Source_Variable.objects.filter(source_id=source_object.id).exists()
+	source_user_check = Source_User.objects.filter(source=source_object.id).filter(user=user_object.id).exists()
 	if source_var_check:
 		source_variable = Source_Variable.objects.filter(source_id=source_object.id).values('variable_name','variable_value')
 	else:
@@ -35,4 +38,4 @@ def detail(request, source_id):
 	sourcename = {'name':source_object.name}
 	#Call function apicall to perform an api or rss call and parses the data into a flat format
 	context = apicall(rss_flag, url, dict0_flag, sourcename, oauth_version, url_param)
-	return render(request, 'source/details.html', {'JSON': context})
+	return render(request, 'source/details.html', {'JSON': context, 'su_check':source_user_check})
