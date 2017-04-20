@@ -15,7 +15,7 @@ class Source(models.Model):
 	description		= models.CharField(max_length=400)
 	
 	def __str__(self):
-		return self.name + "  (Is Active:" + str(self.is_active) + ")"
+		return self.name 
 
 class Source_Variable(models.Model):
 	source 			= models.ForeignKey(Source, on_delete=models.CASCADE)
@@ -31,7 +31,10 @@ class Source_Variable(models.Model):
 		#return str(self.source) + " " + self.variable_name + " " + self.variable_value}
 		
 class Source_User(models.Model):
-	user 			= models.ForeignKey(User, on_delete=models.CASCADE)
-	source 			= models.ForeignKey(Source, on_delete=models.CASCADE)
+	user 			= models.ForeignKey(User, related_name='user', on_delete=models.CASCADE)
+	source 			= models.ForeignKey(Source, related_name='source', on_delete=models.CASCADE)
 	date_created	= models.DateTimeField(auto_now_add=True)
 	is_active		= models.BooleanField(default=True)
+	
+	def __str__(self):
+		return str(self.source) + "_" + str(self.user)

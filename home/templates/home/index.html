@@ -33,8 +33,14 @@
 </div>
 <div>
 	<h2>Sources</h2>
-	{% for key, value in source.items %}
-		<p>{{ value }}</p>
+	<div class="w3-third w3-left">
+	{% for source in object_list %}
+		{% if source.id %}
+			<li class="w3-sourcelinks w3-center"><a href="/source/{{ source.id }}/">{{ source.name }}</a></li>
+		{% else %}
+			 <a href="/source/">Add a Source</a>  
+		{% endif %}
 	{% endfor %}
+	</div>
 </div>
 {% endblock content %}
