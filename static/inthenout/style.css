@@ -91,3 +91,8 @@ body {
     font-size: 75%;
     text-decoration: none;
 }
+
+.w3-homecategory{
+	letter-spacing: 5px;
+	font-weight: bold;
+}

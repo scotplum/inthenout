@@ -3,6 +3,7 @@ import datetime
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.forms import ModelForm
 
 class Source(models.Model):
 	name 			= models.CharField(max_length=30)
@@ -38,3 +39,9 @@ class Source_User(models.Model):
 	
 	def __str__(self):
 		return str(self.source) + "_" + str(self.user)
+		
+
+class SourceUserForm(ModelForm):
+    class Meta:
+		model = Source_User
+		exclude = ('user','source','date_created','is_active')

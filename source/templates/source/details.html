@@ -5,12 +5,24 @@
 {% block content %}
 <div class="w3-barnav">
 	{% if su_check %}
-	<form class="w3-text-red w3-padding">
-	<button type="submit">Remove from my Sources</button>
-	</form>
+		{% if su_is_active == True %}
+			<form name="sourceremove" class="w3-text-red w3-padding" method="Post">
+			<button type="submit">Remove Source</button>
+			{% csrf_token %}
+			{{ form.as_p }}
+			</form>
+		{% else %}
+			<form name="sourceremove" class="w3-text-red w3-padding" method="Post">
+			<button type="submit">Add Source</button>
+			{% csrf_token %}
+			{{ form.as_p }}
+			</form>
+		{% endif %}
 	{% else %}
-	<form class="w3-text-red w3-padding">
+	<form name="sourceadd" class="w3-text-red w3-padding" method="Post">
 	<button type="submit">Add to my Sources</button>
+	{% csrf_token %}
+	{{ form.as_p }}
 	</form>
 	{% endif %}
 	<div class="w3-border w3-border-color">
