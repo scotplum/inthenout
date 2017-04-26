@@ -10,14 +10,21 @@ from inthenout.utils import apicall
 context = {}
 
 def index(request):
+	#Get all source objects
 	sources = Source.objects.all()
-	context = {'object_list':sources}
+	#Get the object for this user and assign Source_User data
+	user_object = request.user
+	context['object_list'] = Source_User.objects.filter(user=user_object.id)
+	#Assign context
+	context['source_list'] = sources
 	return render(request, 'source/index.html', context)
 
 #The function below parses RSS feeds and API calls	
 @login_required
 def detail(request, source_id):
 	#Assign variables
+	user_object = request.user
+	source_user_object = Source_User.objects.filter(user=user_object.id)
 	su_is_active = ""
 	source_variable = []
 	url_param = {}
@@ -57,4 +64,4 @@ def detail(request, source_id):
 	sourcename = {'name':source_object.name}
 	#Call function apicall to perform an api or rss call and parses the data into a flat format
 	context = apicall(rss_flag, url, dict0_flag, sourcename, oauth_version, url_param)
-	return render(request, 'source/details.html', {'JSON': context, 'su_check':source_user_check, 'su_is_active':su_is_active})
+	return render(request, 'source/details.html', {'JSON': context, 'su_check':source_user_check, 'su_is_active':su_is_active, 'object_list':source_user_object})

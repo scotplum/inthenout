@@ -13,7 +13,6 @@
     </head>
 	
     <body>
-    
         <div class="w3-right w3-container w3-threequarter">
             <div class="w3-navbar w3-barnav">
                 {% block topbar %}
@@ -24,7 +23,7 @@
 				<a href="/accounts/login/" class="w3-bar-item w3-nav w3-right w3-padding-medium w3-section w3-hover-opacity">login</a>
 				<a href="/accounts/signup/" class="w3-bar-item w3-nav w3-right w3-padding-medium w3-section w3-hover-opacity">register</a>
 				{% endif %}
-				<a href="/emailupdate/" class="w3-bar-item w3-nav w3-right w3-padding-medium w3-section w3-hover-opacity">update me</a>
+				<a href="/emailupdate/" class="w3-bar-item w3-nav w3-left w3-padding-medium w3-section w3-hover-opacity">update me</a>
                 {% endblock topbar %}
             </div>
             <div id="content" class="w3-workspace w3-padding-16">
@@ -41,7 +40,12 @@
                         <h1 class="w3-sidenavi w3-hover-black" onclick="w3.toggleShow('#sourcelinks');">source</h1>
                             <div id="sourcelinks" class="">
                                 {% block sidebar_source %}
-                                <a href="/source/" class="w3-sidenavlinks w3-hover-red">Add Source &#10162;</a>                                    
+                                <a href="/source/" class="w3-sidenavlinks w3-hover-red">Add Source &#10162;</a>
+								{% for ns in object_list %}
+									{% if ns.is_active == True %}
+								<a href="/source/{{ ns.source.id }}/" class="w3-sidenavlinks w3-hover-red">{{ ns.source.name }}</a>
+									{% endif %}
+								{% endfor %}
                                 {% endblock sidebar_source %}
                             </div>
                         </ul>

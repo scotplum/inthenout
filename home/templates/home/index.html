@@ -7,24 +7,26 @@
 	<div class="w3-center w3-sourcelinks">
 		{% if request.user.is_authenticated %}
 		<div class="w3-container">
-			<div class="w3-half w3-left">
+			<div class="w3-half w3-sourcelinks">
 				<p>ito_username: <span style="color: red">{{ request.user.username }}</span></p>
 				{% if request.user.first_name == "" %}
 				<p>ito_first_name: <span style="color: red">[no value]</p>
 				{% else %}
 				<p>ito_first_name: <span style="color: red">{{ request.user.first_name }}</p>
 				{% endif %}
+				<p>ito_date_joined: <span style="color: red">{{ request.user.date_joined }}</span></p>
 			</div>
-			<div class="w3-half w3-right">
+			<div class="w3-half w3-sourcelinks w3-right">
 				<p>ito_email: <span style="color: red">{{ request.user.email }}</span></p>
 				{% if request.user.last_name == "" %}
 				<p>ito_last_name: <span style="color: red">[no value]</span></p>
 				{% else %}
 				<p>ito_last_name: <span style="color: red">{{ request.user.last_name }}</span></p>
 				{% endif %}
+				<p>ito_last_login: <span style="color: red">{{ request.user.last_login }}</span></p>
 			</div>
 			<div>
-				<p>ito_date_joined: <span style="color: red">{{ request.user.date_joined }}</span></p>
+
 			</div>
 		</div>
 		{% else %}<a href="/accounts/login/">Please login</a> or <a href="/accounts/signup/">register</a>.
@@ -32,21 +34,21 @@
 	</div>
 	<div class="w3-container">
 		<div class="w3-third">
-			<h3 class="w3-homecategory w3-center">sources</h3>
-			<li class="w3-sourcelinks w3-center"><a href="/source/">Add Source</a></li>
+			<h3 class="w3-homecategory">sources</h3>
+			<li class="w3-sourcelinks"><a class="w3-sourcelinks"href="/source/">Add Source &#10162;</a></li>
 		{% for source in object_list %}
 			{% if source.is_active == True %}
-				<li class="w3-sourcelinks w3-center"><a href="/source/{{ source.source.id }}/">{{ source.source.name }}</a></li>
+			<li class="w3-sourcelinks"><a class="w3-sourcelinks" href="/source/{{ source.source.id }}/">{{ source.source.name }}</a></li>
 			{% endif %}
 		{% endfor %}
 		</div>
 		<div class="w3-third">
-			<h3 class="w3-homecategory w3-center">collections</h3>
-			<li class="w3-sourcelinks w3-center"><a href="">Add Collection</a></li><br>
+			<h3 class="w3-homecategory">collections</h3>
+			<li class="w3-sourcelinks"><a class="w3-sourcelinks"href="">Add Collection &#10162;</a></li><br>
 		</div>
 		<div class="w3-third">
 			<h3 class="w3-homecategory w3-center">outputs</h3>
-			<li class="w3-sourcelinks w3-center"><a href="">Add Output</a></li><br>
+			<li class="w3-sourcelinks"><a class="w3-sourcelinks w3-margin-left" href="">Add Output &#10162;</a></li><br>
 		</div>
 	</div>
 <br>

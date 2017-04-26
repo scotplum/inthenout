@@ -15,8 +15,8 @@ body {
 .w3-nav {
     font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
     letter-spacing: 2px;
-    font-variant: small-caps;
-    font-size: 180%;
+#    font-variant: small-caps;
+    font-size: 140%;
     margin-right: 3%;
     color: #3369b8;
 }
@@ -66,9 +66,9 @@ body {
     padding: 1px;
     list-style-type: none;
     font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     font-variant: small-caps;
-    font-size: 90%;
+    font-size: 75%;
     text-decoration: none;
 }
 
@@ -77,14 +77,14 @@ body {
     }
 
 .w3-sourcecontent{
-    text-align:left;
+    text-align:center;
     font-size: 65%;
 }
 
 .w3-sourcelinks{
     text-align: left;
     margin: 0;
-    padding: 0;
+    padding: 2px;
     list-style-type: none;
     font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
     letter-spacing: 1px;
@@ -93,6 +93,7 @@ body {
 }
 
 .w3-homecategory{
-	letter-spacing: 5px;
+	letter-spacing: 10px;
+	font-size: 125%;
 	font-weight: bold;
 }
