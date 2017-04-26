@@ -4,13 +4,21 @@
 
 {% block content %}
 
-<div class="w3-barnav">
-	<p>Select a Source...</p>
-	{% for source in source_list %}
-		{% if source.is_active is True%}
-			<li class="w3-sourcelinks"><a href="{% url 'source:detail' source.id %}">{{ source.name }}</a></li>
-		{% endif %}
-	{% endfor %}
-<br>
+<div class="w3-barnav w3-container">
+	<div class="w3-half w3-left">
+		<p>Source</p>
+		{% for source in source_list|dictsort:"name" %}
+			{% if source.is_active is True%}
+				<li class="w3-sourcelinks"><a href="{% url 'source:detail' source.id %}">{{ source.name }}</a></li>
+			{% endif %}
+		{% endfor %}
+		<br>
+	</div>
+	<div class="w3-half w3-right">
+		<p>Source Category</p>
+		{% for source in source_category|dictsort:"category" %}
+			<li class="w3-sourcelinks"><a href="">{{ source.category }}</a></li>
+		{% endfor %}
+	</div>
 </div>
 {% endblock content %}

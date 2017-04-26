@@ -7,31 +7,21 @@
 	<div class="w3-center w3-sourcelinks">
 		{% if request.user.is_authenticated %}
 		<div class="w3-container">
-			<div class="w3-half w3-sourcelinks">
-				<p>ito_username: <span style="color: red">{{ request.user.username }}</span></p>
-				{% if request.user.first_name == "" %}
-				<p>ito_first_name: <span style="color: red">[no value]</p>
-				{% else %}
-				<p>ito_first_name: <span style="color: red">{{ request.user.first_name }}</p>
-				{% endif %}
-				<p>ito_date_joined: <span style="color: red">{{ request.user.date_joined }}</span></p>
+			<div class="w3-half">
+				<h3 class="w3-homecategory">ito</h3>
+				<p class="w3-sourcelinks">ito_username: <span style="color: red">{{ request.user.username }}</span></p>
+				<p class="w3-sourcelinks">ito_email: <span style="color: red">{{ request.user.email }}</span></p>
+				<p class="w3-sourcelinks">ito_date_joined: <span style="color: red">{{ request.user.date_joined }}</span></p>
+				<p class="w3-sourcelinks">ito_last_login: <span style="color: red">{{ request.user.last_login }}</span></p>
 			</div>
-			<div class="w3-half w3-sourcelinks w3-right">
-				<p>ito_email: <span style="color: red">{{ request.user.email }}</span></p>
-				{% if request.user.last_name == "" %}
-				<p>ito_last_name: <span style="color: red">[no value]</span></p>
-				{% else %}
-				<p>ito_last_name: <span style="color: red">{{ request.user.last_name }}</span></p>
-				{% endif %}
-				<p>ito_last_login: <span style="color: red">{{ request.user.last_login }}</span></p>
-			</div>
-			<div>
-
+			<div class="w3-half">
+				<h3 class="w3-homecategory">custom variables</h3>
 			</div>
 		</div>
 		{% else %}<a href="/accounts/login/">Please login</a> or <a href="/accounts/signup/">register</a>.
 		{% endif %}
 	</div>
+	<br>
 	<div class="w3-container">
 		<div class="w3-third">
 			<h3 class="w3-homecategory">sources</h3>

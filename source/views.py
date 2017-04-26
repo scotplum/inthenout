@@ -17,6 +17,7 @@ def index(request):
 	context['object_list'] = Source_User.objects.filter(user=user_object.id)
 	#Assign context
 	context['source_list'] = sources
+	context['source_category'] = Source.objects.values('category').distinct()
 	return render(request, 'source/index.html', context)
 
 #The function below parses RSS feeds and API calls	
