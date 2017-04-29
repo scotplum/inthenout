@@ -41,7 +41,7 @@
                             <div id="sourcelinks" class="">
                                 {% block sidebar_source %}
                                 <a href="/source/" class="w3-sidenavlinks w3-hover-red">Add Source &#10162;</a>
-								{% for ns in object_list %}
+								{% for ns in object_list|dictsort:"source.name" %}
 									{% if ns.is_active == True %}
 								<a href="/source/{{ ns.source.id }}/" class="w3-sidenavlinks w3-hover-red">{{ ns.source.name }}</a>
 									{% endif %}

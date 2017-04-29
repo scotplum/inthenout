@@ -88,13 +88,23 @@ body {
     list-style-type: none;
     font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
     letter-spacing: 1px;
-    font-size: 75%;
+    font-size: 85%;
     text-decoration: none;
 }
 
 .w3-homecategory{
-	letter-spacing: 7px;
+	letter-spacing: 5px;
 	font-size: 125%;
 	font-weight: bold;
+}
+
+.w3-homelinks{
 	text-align: left;
+    margin: 0;
+    padding: 2px;
+    list-style-type: none;
+    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    letter-spacing: 1px;
+    font-size: 75%;
+    text-decoration: none;
 }

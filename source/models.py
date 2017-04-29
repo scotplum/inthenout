@@ -15,6 +15,7 @@ class Source(models.Model):
 	is_active		= models.BooleanField(default=True)
 	description		= models.CharField(max_length=400)
 	category		= models.CharField(max_length=100)
+	organization	= models.CharField(max_length=100)
 	
 	def __str__(self):
 		return self.name 

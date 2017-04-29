@@ -5,19 +5,25 @@
 {% block content %}
 
 <div class="w3-barnav w3-container">
-	<div class="w3-half w3-left">
+	<div class="w3-third w3-left">
 		<p>Source</p>
 		{% for source in source_list|dictsort:"name" %}
 			{% if source.is_active is True%}
-				<li class="w3-sourcelinks"><a href="{% url 'source:detail' source.id %}">{{ source.name }}</a></li>
+				<li class="w3-sourcelinks w3-hover-red"><a class="w3-sourcelinks" href="{% url 'source:detail' source.id %}">{{ source.name }}</a></li>
 			{% endif %}
 		{% endfor %}
 		<br>
 	</div>
-	<div class="w3-half w3-right">
+	<div class="w3-third w3-center">
 		<p>Source Category</p>
 		{% for source in source_category|dictsort:"category" %}
-			<li class="w3-sourcelinks"><a href="">{{ source.category }}</a></li>
+			<li class="w3-sourcelinks w3-hover-red w3-center"><a class="w3-sourcelinks" href="{% url 'source:category' source.category %}">{{ source.category }}</a></li>
+		{% endfor %}
+	</div>
+	<div class="w3-third w3-right">
+		<p style="text-align:right;">Source Organization</p>
+		{% for source in source_organization|dictsort:"organization" %}
+			<li class="w3-sourcelinks w3-hover-red" style="text-align:right;"><a class="w3-sourcelinks" href="{% url 'source:organization' source.organization %}">{{ source.organization }}</a></li>
 		{% endfor %}
 	</div>
 </div>
