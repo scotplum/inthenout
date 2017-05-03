@@ -54,6 +54,7 @@ EMAIL_PORT = 1025
 INSTALLED_APPS = [
     'emailupdate',
     'source',
+	'collection',
     'home',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
@@ -67,9 +68,12 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+	'crispy_forms',
 	# ... include the providers you want to enable:
 	'allauth.socialaccount.providers.spotify',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 SITE_ID = 1
 
@@ -82,6 +86,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CACHES = {
+   'default': {
+      'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+      'LOCATION': 'my_cache_table',
+   }
+}
 
 ROOT_URLCONF = 'inthenout.urls'
 

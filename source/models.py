@@ -5,6 +5,15 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 
+class Source_Category(models.Model):
+	name 			= models.CharField(max_length=50)
+	date_created 	= models.DateTimeField(auto_now_add=True)
+	description		= models.CharField(max_length=400)
+	is_active		= models.BooleanField(default=True)
+	
+	def __str__(self):
+		return self.name + " | " + self.description
+
 class Source(models.Model):
 	name 			= models.CharField(max_length=30)
 	date_created 	= models.DateTimeField(auto_now_add=True)
@@ -14,7 +23,7 @@ class Source(models.Model):
 	dict0_flag		= models.BooleanField(default=False)
 	is_active		= models.BooleanField(default=True)
 	description		= models.CharField(max_length=400)
-	category		= models.CharField(max_length=100)
+	category		= models.ForeignKey(Source_Category, models.SET_NULL, blank=True, null=True,)
 	organization	= models.CharField(max_length=100)
 	
 	def __str__(self):
@@ -47,3 +56,4 @@ class SourceUserForm(ModelForm):
     class Meta:
 		model = Source_User
 		exclude = ('user','source','date_created','is_active')
+		

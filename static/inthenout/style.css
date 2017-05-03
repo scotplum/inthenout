@@ -15,7 +15,6 @@ body {
 .w3-nav {
     font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
     letter-spacing: 2px;
-#    font-variant: small-caps;
     font-size: 140%;
     margin-right: 3%;
     color: #3369b8;
@@ -36,8 +35,7 @@ body {
     letter-spacing: 4px;
     font-size: 180%;
     font-weight: bold;
-    padding: 0 5%;
-    margin: 1px 0;
+    margin: 0 0;
     text-align: center;
 }
 
@@ -62,14 +60,10 @@ body {
 
 .w3-sidenavlinks{
     text-align: center;
-    margin: 0;
-    padding: 1px;
     list-style-type: none;
     font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
-    letter-spacing: 2px;
-    font-variant: small-caps;
-    font-size: 75%;
-    text-decoration: none;
+    font-size: 80%;
+	color: ghostwhite;
 }
 
 .w3-hidden{

@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
         <script src="https://www.w3schools.com/lib/w3.js"></script>
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
         {% load static %}
         <link rel="stylesheet" href={% static "inthenout/style.css" %}>
     </head>
@@ -38,7 +39,7 @@
                     <div>
                         <ul id="source" class="w3-opacity w3-margin-0 w3-padding-0">
                         <h1 class="w3-sidenavi w3-hover-black" onclick="w3.toggleShow('#sourcelinks');">source</h1>
-                            <div id="sourcelinks" class="">
+                            <div id="sourcelinks">
                                 {% block sidebar_source %}
                                 <a href="/source/" class="w3-sidenavlinks w3-hover-red">Add Source &#10162;</a>
 								{% for ns in object_list|dictsort:"source.name" %}
@@ -53,9 +54,9 @@
                     <div>
                         <ul id="collection" class="w3-opacity w3-margin-0 w3-padding-0 w3-border-top">
                         <h1 class="w3-sidenavi w3-hover-black" onclick="w3.toggleShow('#collectlinks');">collect</h1>
-                            <div id="collectlinks" class="">
+                            <div id="collectlinks" class="sidenavlinks">
                                 {% block sidebar_collect %}
-                                <p class="w3-sidenavlinks w3-hover-red">Add Collection &#10162;</p>
+								<a href="/collection/" class="w3-sidenavlinks w3-hover-red">Add Collection &#10162;</a>
                                 {% endblock sidebar_collect %}
                             </div>
                         </ul>
@@ -63,7 +64,7 @@
                     <div>
                         <ul id="output" class="w3-opacity w3-margin-0 w3-padding-0 w3-border-top">
                         <h1 class="w3-sidenavi w3-hover-black" onclick="w3.toggleShow('#outputlinks');">output</h1>
-                            <div id="outputlinks" class="">
+                            <div id="outputlinks">
                                 {% block sidebar_output %}
                                 <p class="w3-sidenavlinks w3-hover-red">Add Output &#10162;</p>                                    
                                 {% endblock sidebar_output %}

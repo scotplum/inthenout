@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="w3-barnav w3-container">
+	<div>
+		<h2 class="w3-homecategory">Add New Collection</h2>
+		{% crispy form %}
+	</div>
+<br>
+</div>
+{% endblock content %}

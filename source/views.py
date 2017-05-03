@@ -2,7 +2,7 @@ from django.shortcuts import render,  get_object_or_404, redirect
 import requests, datetime, feedparser
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from .models import Source, Source_Variable, Source_User, SourceUserForm
+from .models import Source, Source_Variable, Source_User, SourceUserForm, Source_Category
 from django.contrib.auth.models import User
 
 from inthenout.utils import apicall
@@ -17,7 +17,7 @@ def index(request):
 	context['object_list'] = Source_User.objects.filter(user=user_object.id)
 	#Assign context
 	context['source_list'] = sources
-	context['source_category'] = Source.objects.values('category').distinct()
+	context['source_category'] = Source_Category.objects.all()
 	context['source_organization'] = Source.objects.values('organization').distinct()
 	return render(request, 'source/index.html', context)
 	
@@ -25,9 +25,9 @@ def category(request, category):
 	#Get all source objects
 	sources = Source.objects.filter(category=category)
 	#Get the object for this user and assign Source_User data
-	context['category'] = category 
 	user_object = request.user
 	context['object_list'] = Source_User.objects.filter(user=user_object.id)
+	context['category'] = Source_Category.objects.filter(id=category)	
 	context['source_list'] = sources
 	return render(request, 'source/category.html',context)
 

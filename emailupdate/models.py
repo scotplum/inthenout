@@ -13,7 +13,9 @@ class Email(models.Model):
 	def __str__(self):
 		return 'Email: %s | First Name: %s' % (self.email_address, self.first_name)
 
+'''
 class EmailForm(ModelForm):
     class Meta:
 		model = Email
 		fields = ('first_name', 'email_address',)
+'''

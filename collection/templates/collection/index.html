@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+
+<div class="w3-barnav w3-container">
+	<div>
+		<h2 class="w3-homecategory">Collection</h2>
+	</div>
+</div>
+<div class="w3-barnav w3-container">
+	<div class="w3-third w3-left">
+		<h2 class="w3-homecategory">Source</h2>
+		{% for source in object_list|dictsort:"source.name" %}
+			{% if source.is_active is True%}
+				<li class="w3-sourcelinks w3-hover-red"><a class="w3-sourcelinks w3-margin-left" href="{% url 'source:detail' source.id %}">{{ source.source.name }}</a></li>
+			{% endif %}
+		{% endfor %}
+		<br>
+	</div>
+</div>
+{% endblock content %}
