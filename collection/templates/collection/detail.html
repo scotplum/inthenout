@@ -4,18 +4,35 @@
 
 {% block content %}
 
-<div class="w3-barnav w3-container">
-	<div>
-		<h2 class="w3-homecategory">Collection</h2>
+<div>
+	<div class="w3-container">
+	<h4 class="w3-right w3-homecategory">(ito_collection)</h4>
+	{% for collection in collection %}
+		<h4 class="w3-homecategory">{{ collection.name }}</h4>
+		<li class="w3-homelinks"><a class=""href="">Edit Collection &#10162;</a></li>
+		<ul class="w3-homelinks">name: <span style="color: red;">{{ collection.name }}</span></ul>
+		<ul class="w3-homelinks">description: <span style="color: red;">{{ collection.description }}</span></ul>
+		<ul class="w3-homelinks">category: <span style="color: red;">{{ collection.category }}</span></ul>
+		<ul class="w3-homelinks">created_by: <span style="color: red;">{{ collection.created_by }}</span></ul>
+		<ul class="w3-homelinks">is_active: <span style="color: red;">{{ collection.is_active }}</span></ul>
+		<ul class="w3-homelinks">is_public: <span style="color: red;">{{ collection.is_public }}</span></ul>
+		<ul class="w3-homelinks">date_created: <span style="color: red;">{{ collection.date_created }}</span></ul>
+		<ul class="w3-homelinks">id: <span style="color: red;">{{ collection.id }}</span></ul>
+	{% endfor %}
+	</div>
+</div>
+<div>
+	<div class="w3-container">
+	<h4 class="w3-homecategory">custom collection data</h4>
+	<li class="w3-homelinks"><a class=""href="">Add or Edit Data &#10162;</a></li>
 	</div>
 </div>
 <div class="w3-barnav w3-container">
-	<div class="w3-third w3-left">
-		<h2 class="w3-homecategory">Source</h2>
+	<div class="w3-left w3-container">
+		<h2 class="w3-homecategory">source</h2>
+		<li class="w3-homelinks"><a class=""href="/source/">Add or Remove Source &#10162;</a></li>
 		{% for source in object_list|dictsort:"source.name" %}
-			{% if source.is_active is True%}
-				<li class="w3-sourcelinks w3-hover-red"><a class="w3-sourcelinks w3-margin-left" href="{% url 'source:detail' source.id %}">{{ source.source.name }}</a></li>
-			{% endif %}
+			<li class="w3-homelinks"><a class="" href="{% url 'source:detail' source.id %}">{{ source.source.name }}</a></li>
 		{% endfor %}
 		<br>
 	</div>

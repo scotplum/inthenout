@@ -23,4 +23,4 @@ class CollectionForm(ModelForm):
 	
     class Meta:
 		model = Collection
-		fields = ('name', 'description',)
+		fields = ('name', 'description', 'category',)
