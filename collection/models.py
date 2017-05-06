@@ -34,4 +34,13 @@ class Collection_Variable(models.Model):
 	is_active 		= models.BooleanField(default=True)
 	
 	def __str__(self):
-		return "{variable_name:" + self.variable_name + ",variable_value:" + self.variable_value + "}"
+		return "variable_name: " + self.variable_name + " | variable_value: " + self.variable_value + " | collection: " + str(self.collection.id)
+		
+class User_Collection(models.Model):
+	collection 		= models.ForeignKey(Collection, on_delete=models.CASCADE)
+	user 			= models.ForeignKey(User, related_name='user_collection', on_delete=models.CASCADE)
+	subscribed_date	= models.DateTimeField(auto_now_add=True)
+	is_active		= models.BooleanField(default=True)
+	
+	def __str__(self):
+		return str(self.collection) + "_" + str(self.user)

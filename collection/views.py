@@ -3,7 +3,7 @@ import requests, datetime, feedparser
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from source.models import Source, Source_Variable, Source_User
-from collection.models import Collection, Collection_Variable
+from collection.models import Collection, Collection_Variable, User_Collection
 from django.contrib.auth.models import User
 from forms import CollectionForm
 from inthenout.utils import apicall
@@ -52,6 +52,7 @@ def detail(request, collection_id):
 	user_object = request.user
 	collection_object = Collection.objects.filter(id=collection_id)
 	context['object_list'] = Source_User.objects.filter(user=user_object.id)
+	context['collection_list'] = User_Collection.objects.filter(user=user_object.id)
 	context['collection'] = collection_object
 	context['collection_variable'] = Collection_Variable.objects.filter(collection=collection_object)
 	return render(request, 'collection/detail.html', context)

@@ -57,6 +57,11 @@
                             <div id="collectlinks" class="sidenavlinks">
                                 {% block sidebar_collect %}
 								<a href="/collection/add/" class="w3-sidenavlinks w3-hover-red">Add Collection &#10162;</a>
+								{% for nc in collection_list|dictsort:"collection.name" %}
+									{% if nc.is_active == True %}
+								<a href="/collection/{{ nc.collection.id }}/" class="w3-sidenavlinks w3-hover-red">{{ nc.collection.name }}</a>
+									{% endif %}
+								{% endfor %}
                                 {% endblock sidebar_collect %}
                             </div>
                         </ul>
