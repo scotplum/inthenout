@@ -26,3 +26,12 @@ class Collection(models.Model):
 	def __str__(self):
 		return self.name 
 		
+class Collection_Variable(models.Model):
+	collection 		= models.ForeignKey(Collection, on_delete=models.CASCADE)
+	variable_name 	= models.CharField(max_length=100)
+	variable_value 	= models.CharField(max_length=500)
+	date_created 	= models.DateTimeField(auto_now_add=True)
+	is_active 		= models.BooleanField(default=True)
+	
+	def __str__(self):
+		return "{variable_name:" + self.variable_name + ",variable_value:" + self.variable_value + "}"

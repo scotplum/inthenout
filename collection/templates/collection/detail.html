@@ -4,36 +4,47 @@
 
 {% block content %}
 
-<div>
-	<div class="w3-container">
-	<h4 class="w3-right w3-homecategory">(ito_collection)</h4>
-	{% for collection in collection %}
-		<h4 class="w3-homecategory">{{ collection.name }}</h4>
-		<li class="w3-homelinks"><a class=""href="">Edit Collection &#10162;</a></li>
-		<ul class="w3-homelinks">name: <span style="color: red;">{{ collection.name }}</span></ul>
-		<ul class="w3-homelinks">description: <span style="color: red;">{{ collection.description }}</span></ul>
-		<ul class="w3-homelinks">category: <span style="color: red;">{{ collection.category }}</span></ul>
-		<ul class="w3-homelinks">created_by: <span style="color: red;">{{ collection.created_by }}</span></ul>
-		<ul class="w3-homelinks">is_active: <span style="color: red;">{{ collection.is_active }}</span></ul>
-		<ul class="w3-homelinks">is_public: <span style="color: red;">{{ collection.is_public }}</span></ul>
-		<ul class="w3-homelinks">date_created: <span style="color: red;">{{ collection.date_created }}</span></ul>
-		<ul class="w3-homelinks">id: <span style="color: red;">{{ collection.id }}</span></ul>
-	{% endfor %}
-	</div>
-</div>
-<div>
-	<div class="w3-container">
-	<h4 class="w3-homecategory">custom collection data</h4>
-	<li class="w3-homelinks"><a class=""href="">Add or Edit Data &#10162;</a></li>
-	</div>
-</div>
-<div class="w3-barnav w3-container">
-	<div class="w3-left w3-container">
-		<h2 class="w3-homecategory">source</h2>
-		<li class="w3-homelinks"><a class=""href="/source/">Add or Remove Source &#10162;</a></li>
-		{% for source in object_list|dictsort:"source.name" %}
-			<li class="w3-homelinks"><a class="" href="{% url 'source:detail' source.id %}">{{ source.source.name }}</a></li>
+<div class="w3-barnav">
+	<div>
+		<div>
+		{% for collection in collection %}
+			<div class="w3-barnav">
+				<h4 class="w3-homecategory w3-center">{{ collection.name }}</h4>
+				<i><h5 class="w3-collectionlinks w3-center">{{ collection.description }}</h5></i><br>
+			</div>
+			<div class="w3-container">
+				<br>
+				<h4 class="w3-homecategory">collection</h4>
+				<ul class="w3-collectionlinks">name: <span style="color: red;">{{ collection.name }}</span></ul>
+				<ul class="w3-collectionlinks">description: <span style="color: red;">{{ collection.description }}</span></ul>
+				<ul class="w3-collectionlinks">category: <span style="color: red;">{{ collection.category }}</span></ul>
+				<ul class="w3-collectionlinks">created_by: <span style="color: red;">{{ collection.created_by }}</span></ul>
+				<ul class="w3-collectionlinks">is_active: <span style="color: red;">{{ collection.is_active }}</span></ul>
+				<ul class="w3-collectionlinks">is_public: <span style="color: red;">{{ collection.is_public }}</span></ul>
+				<ul class="w3-collectionlinks">date_created: <span style="color: red;">{{ collection.date_created }}</span></ul>
+				<ul class="w3-collectionlinks">id: <span style="color: red;">{{ collection.id }}</span></ul>
 		{% endfor %}
+			</div>
+			<li class="w3-collectionlinks w3-padding-top w3-right"><a href="">Edit Collection &#10162;</a></li>
+		</div>
+	</div>
+	<div>
+		<div class="w3-container">
+		<h4 class="w3-homecategory">custom collection data</h4>
+		{% for var in collection_variable %}
+			{% if var.variable_value %}
+			<ul class="w3-collectionlinks">{{ var.variable_name }}: <span style="color: red;">{{ var.variable_value }}</span></ul>
+			{% endif %}
+		{% endfor %}
+		</div>
+		<li class="w3-collectionlinks w3-right"><a href="">Add/Edit Custom &#10162;</a></li>
+	</div>
+	<div>
+		<div class="w3-container">
+			<h2 class="w3-homecategory">source</h2>
+
+		</div>
+		<li class="w3-collectionlinks w3-right"><a href="/source/">Add/Remove Source &#10162;</a></li>
 		<br>
 	</div>
 </div>

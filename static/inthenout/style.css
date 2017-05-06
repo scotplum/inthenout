@@ -102,3 +102,14 @@ body {
     font-size: 75%;
     text-decoration: none;
 }
+
+.w3-collectionlinks{
+	text-align: left;
+    margin: 0;
+    padding: 2px;
+    list-style-type: none;
+    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    letter-spacing: 1px;
+    font-size: 70%;
+    text-decoration: none;
+}

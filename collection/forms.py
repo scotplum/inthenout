@@ -16,7 +16,7 @@ class CollectionForm(ModelForm):
         self.helper.form_class = 'blueForms'
         self.helper.form_method = 'post'
         self.helper.form_class = 'form-horizontal'
-        self.helper.add_input(Submit('submit', 'Sign Up'))
+        self.helper.add_input(Submit('submit', 'Submit'))
 		
 	def __str__(self):
 		return 'Name: %s | Description: %s' % (self.name, self.description)
