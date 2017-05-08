@@ -25,7 +25,7 @@
 				<ul class="w3-collectionlinks">id: <span style="color: red;">{{ collection.id }}</span></ul>
 		{% endfor %}
 			</div>
-			<li class="w3-collectionlinks w3-padding-top w3-right"><a href="">Edit Collection &#10162;</a></li>
+			<li class="w3-collectionlinks w3-right"><a href="">Edit Collection &#10162;</a></li>
 		</div>
 	</div>
 	<div>
@@ -37,7 +37,9 @@
 			{% endif %}
 		{% endfor %}
 		</div>
-		<li class="w3-collectionlinks w3-right"><a href="">Add/Edit Custom &#10162;</a></li>
+		{% for collection in collection %}
+		<li class="w3-collectionlinks w3-right"><a href="/collection/{{ collection.id }}/customdata/">Add Custom Data &#10162;</a></li>
+		{% endfor %}
 	</div>
 	<div>
 		<div class="w3-container">

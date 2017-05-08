@@ -1,7 +1,13 @@
+import requests, feedparser
+from flatten_json import flatten
+from urllib import urlencode
+from source.models import Source, Source_User
+from collection.models import Collection, User_Collection
+from django.contrib.auth.models import User
+	
+context = {}
+
 def apicall(rss_flag, url, dict0_flag, sourcename, oauth_version, url_param):
-	import requests, feedparser
-	from flatten_json import flatten
-	from urllib import urlencode
 	context = {}
 	if not url_param:
 		url_call = url
@@ -20,4 +26,11 @@ def apicall(rss_flag, url, dict0_flag, sourcename, oauth_version, url_param):
 		context['api'] = requests.get(url_call).json()[0]
 	context['source'] = sourcename
 	context = flatten(context, "_")
+	return context
+	
+def navigationlinks(request):
+	#Get the object for this user and assign Source_User data
+	user_object = request.user
+	context['object_list'] = Source_User.objects.filter(user=user_object.id)
+	context['collection_list'] = User_Collection.objects.filter(user=user_object.id)
 	return context

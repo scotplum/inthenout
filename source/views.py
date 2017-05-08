@@ -3,18 +3,17 @@ import requests, datetime, feedparser
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import Source, Source_Variable, Source_User, SourceUserForm, Source_Category
+from collection.models import User_Collection
 from django.contrib.auth.models import User
 
-from inthenout.utils import apicall
+from inthenout.utils import apicall, navigationlinks
 
 context = {}
 
 def index(request):
 	#Get all source objects
 	sources = Source.objects.all()
-	#Get the object for this user and assign Source_User data
-	user_object = request.user
-	context['object_list'] = Source_User.objects.filter(user=user_object.id)
+	context = navigationlinks(request)
 	#Assign context
 	context['source_list'] = sources
 	context['source_category'] = Source_Category.objects.all()
@@ -24,9 +23,7 @@ def index(request):
 def category(request, category):
 	#Get all source objects
 	sources = Source.objects.filter(category=category)
-	#Get the object for this user and assign Source_User data
-	user_object = request.user
-	context['object_list'] = Source_User.objects.filter(user=user_object.id)
+	context = navigationlinks(request)
 	context['category'] = Source_Category.objects.filter(id=category)	
 	context['source_list'] = sources
 	return render(request, 'source/category.html',context)
@@ -34,10 +31,8 @@ def category(request, category):
 def organization(request, organization):
 	#Get all source objects
 	sources = Source.objects.filter(organization=organization)
-	#Get the object for this user and assign Source_User data
+	context = navigationlinks(request)
 	context['organization'] = organization 
-	user_object = request.user
-	context['object_list'] = Source_User.objects.filter(user=user_object.id)
 	context['source_list'] = sources
 	return render(request, 'source/organization.html',context)	
 	
@@ -47,6 +42,7 @@ def detail(request, source_id):
 	#Assign variables
 	user_object = request.user
 	source_user_object = Source_User.objects.filter(user=user_object.id)
+	collection_object = User_Collection.objects.filter(user=user_object.id)
 	su_is_active = ""
 	source_variable = []
 	url_param = {}
@@ -86,4 +82,4 @@ def detail(request, source_id):
 	sourcename = {'name':source_object.name}
 	#Call function apicall to perform an api or rss call and parses the data into a flat format
 	context = apicall(rss_flag, url, dict0_flag, sourcename, oauth_version, url_param)
-	return render(request, 'source/details.html', {'JSON': context, 'su_check':source_user_check, 'su_is_active':su_is_active, 'object_list':source_user_object})
+	return render(request, 'source/details.html', {'JSON': context, 'su_check':source_user_check, 'su_is_active':su_is_active, 'object_list':source_user_object, 'collection_list':collection_object})

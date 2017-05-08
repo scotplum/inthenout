@@ -16,9 +16,12 @@
 			</div>
 			<div class="w3-half">
 				<h3 class="w3-homecategory" style="text-align:right;">custom user data</h3>
-				<p class="w3-homelinks" style="text-align:right;">ito_cud_firstname: <span style="color: red">Scott</span></p>
-				<p class="w3-homelinks" style="text-align:right;">ito_cud_lastname: <span style="color: red">Plumbtree</span></p>
-				<p class="w3-homelinks" style="text-align:right;">ito_cud_wife: <span style="color: red">Marcie</span></p>
+				<li class="w3-homelinks w3-right"><a href="/home/customdata/">Add Custom Data &#10162;</a></li><br>
+				{% for custom in custom_user_data %}
+					{% if custom.is_active == True %}
+					<li class="w3-homelinks" style="text-align:right;">{{ custom.variable_name }}: <span style="color: red">{{ custom.variable_value }}</span></li>
+					{% endif %}
+				{% endfor %}
 			</div>
 		</div>
 		{% else %}<a href="/accounts/login">Please login</a> or <a href="/accounts/signup/">register</a>.
@@ -37,7 +40,12 @@
 		</div>
 		<div class="w3-third">
 			<h3 class="w3-homecategory w3-center">collections</h3>
-			<li class="w3-homelinks w3-center"><a class="w3-homelinks w3-hover-red"href="/collection/">Add Collection &#10162;</a></li><br>
+			<li class="w3-homelinks w3-center"><a class="w3-homelinks w3-hover-red"href="/collection/">Add Collection &#10162;</a></li>
+		{% for collection in collection_list|dictsort:"collection.name" %}
+			{% if collection.is_active == True %}
+			<li class="w3-homelinks w3-center"><a class="w3-homelinks w3-hover-red" href="/collection/{{ collection.collection.id }}/">{{ collection.collection.name }}</a></li>
+			{% endif %}
+		{% endfor %}
 		</div>
 		<div class="w3-third">
 			<h3 class="w3-homecategory" style="text-align:right;">outputs</h3>
