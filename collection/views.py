@@ -30,6 +30,9 @@ def add(request):
 			post.created_by = user_object
 			post.save()
 			redirecturl = '/collection/' + str(post.id) + '/'
+			collection_object = Collection.objects.get(pk=post.id)
+			post_uc = User_Collection(collection=collection_object, user=user_object)
+			post_uc.save()
 			return redirect(redirecturl)
 	else:
 		form_class = CollectionForm

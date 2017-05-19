@@ -14,4 +14,4 @@ class User_Variable(models.Model):
 	is_active 		= models.BooleanField(default=True)
 	
 	def __str__(self):
-		return "variable_name: " + self.variable_name + " | variable_value: " + self.variable_value + " | collection: " + str(self.user.id)
+		return "variable_name: " + self.variable_name + " | variable_value: " + self.variable_value + " | user: " + str(self.user)

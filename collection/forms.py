@@ -11,13 +11,20 @@ from crispy_forms.bootstrap import TabHolder, Tab
 class CollectionForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(CollectionForm, self).__init__(*args, **kwargs)
+        self.fields['name'].label = "Collection Name"
         self.helper = FormHelper(self)
         self.helper.form_id = 'id-collection-add-form'
-        self.helper.form_class = 'blueForms'
         self.helper.form_method = 'post'
-        self.helper.form_class = 'form-horizontal'
+        self.helper.form_class = 'form-horizontal w3-forms'
         self.helper.add_input(Submit('submit', 'Submit'))
-		
+        self.helper.layout = Layout(
+            Div(
+				'name',
+				'description',
+				'category'
+				)
+			)
+			
 	def __str__(self):
 		return 'Name: %s | Description: %s' % (self.name, self.description)
 	

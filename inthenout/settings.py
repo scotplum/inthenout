@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
 	'127.0.0.1',
 	'localhost',
 	'inthenout.pagekite.me',
+	'2dc6d8d3.ngrok.io',
 ]
 
 AUTHENTICATION_BACKENDS = (

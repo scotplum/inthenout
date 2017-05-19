@@ -9,10 +9,10 @@
 		<div class="w3-container">
 			<div class="w3-half">
 				<h3 class="w3-homecategory" style="text-align:left;">inthen&#10162;ut</h3>
-				<p class="w3-homelinks">ito_username: <span style="color: red">{{ request.user.username }}</span></p>
-				<p class="w3-homelinks">ito_email: <span style="color: red">{{ request.user.email }}</span></p>
-				<p class="w3-homelinks">ito_date_joined: <span style="color: red">{{ request.user.date_joined }}</span></p>
-				<p class="w3-homelinks">ito_last_login: <span style="color: red">{{ request.user.last_login }}</span></p>
+				<p class="w3-homelinks">username: <span style="color: red">{{ request.user.username }}</span></p>
+				<p class="w3-homelinks">email: <span style="color: red">{{ request.user.email }}</span></p>
+				<p class="w3-homelinks">date_joined: <span style="color: red">{{ request.user.date_joined }}</span></p>
+				<p class="w3-homelinks">last_login: <span style="color: red">{{ request.user.last_login }}</span></p>
 			</div>
 			<div class="w3-half">
 				<h3 class="w3-homecategory" style="text-align:right;">custom user data</h3>
@@ -40,7 +40,7 @@
 		</div>
 		<div class="w3-third">
 			<h3 class="w3-homecategory w3-center">collections</h3>
-			<li class="w3-homelinks w3-center"><a class="w3-homelinks w3-hover-red"href="/collection/">Add Collection &#10162;</a></li>
+			<li class="w3-homelinks w3-center"><a class="w3-homelinks w3-hover-red"href="/collection/add/">Add Collection &#10162;</a></li>
 		{% for collection in collection_list|dictsort:"collection.name" %}
 			{% if collection.is_active == True %}
 			<li class="w3-homelinks w3-center"><a class="w3-homelinks w3-hover-red" href="/collection/{{ collection.collection.id }}/">{{ collection.collection.name }}</a></li>
