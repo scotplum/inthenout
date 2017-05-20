@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}{% endblock title %}
+{% block title %}Collection Details{% endblock title %}
 
 {% block content %}
 
-<div class="w3-barnav">
+<div>
 	<div>
 		<div>
 		{% for collection in collection %}
@@ -23,7 +23,7 @@
 				<div class="w3-row w3-padding-right"><div class="w3-col w3-collectionvar" style="width:15%">date_created</div><div class="w3-collectionval w3-rest">{{ collection.date_created }}</div></div>
 				<div class="w3-row w3-padding-right"><div class="w3-col w3-collectionvar" style="width:15%">id</div><div class="w3-collectionval w3-rest">{{ collection.id }}</div></div>
 				<div class="w3-row w3-padding-right"><div class="w3-col w3-collectionvar" style="width:15%">description</div><div class="w3-collectionval w3-rest">{{ collection.description }}</div></div>
-				<div><li class="w3-collectionlinks w3-margin-bottom w3-margin-top w3-padding-left"><a href="">Edit Collection &#10162;</a></li></div>
+				<div><li class="w3-collectionlinks w3-margin-bottom w3-margin-top w3-padding-left"><a href="">edit collection &#10162;</a></li></div>
 		{% endfor %}
 			</div>
 		</div>
@@ -37,15 +37,35 @@
 			{% endif %}
 		{% endfor %}
 		{% for collection in collection %}
-		<li class="w3-collectionlinks w3-margin-bottom w3-margin-top w3-padding-left"><a href="/collection/{{ collection.id }}/customdata/">Add Custom Data &#10162;</a></li>
+		<li class="w3-collectionlinks w3-margin-bottom w3-margin-top w3-padding-left"><a href="/collection/{{ collection.id }}/customdata/">edit custom &#10162;</a></li>
 		{% endfor %}
 		</div>
 
 	</div>
 	<div>
-		<div class="w3-container">
-			<h2 class="w3-homecategory">source</h2>
-			<li class="w3-collectionlinks w3-margin-bottom w3-margin-top"><a href="/source/">Add/Remove Source &#10162;</a></li>
+		<div class="w3-container w3-barnav w3-padding-bottom">
+			{% if collsource_count > 1 %}
+			<h2 class="w3-homecategory w3-padding-top w3-padding-left">sources</h2>
+			{% else %}
+			<h2 class="w3-homecategory w3-padding-top w3-padding-left">source</h2>
+			{% endif %}
+			{% if collsource_count > 0 %}
+				{% for source in collection_source %}
+				<div class="w3-sourcelinks w3-padding-left w3-margin-left">{{ source.source.name }}</div>
+				{% endfor %}
+			{% else %}
+				<div class="w3-collectionval w3-padding-left w3-margin-left">*A Source Has Not Yet Been Assigned To This Collection*</div>
+			{% endif %}
+			{% if collsource_count > 1 %}
+			{% for collection in collection %}
+			<li class="w3-collectionlinks w3-margin-bottom w3-margin-top w3-padding-left"><a href="/collection/{{ collection.id }}/collectsource/">edit sources &#10162;</a></li>
+			{% endfor %}
+			{% else %}
+			{% for collection in collection %}
+			<li class="w3-collectionlinks w3-margin-bottom w3-margin-top w3-padding-left"><a href="/collection/{{ collection.id }}/collectsource/">edit source &#10162;</a></li>
+			{% endfor %}
+			{% endif %}
+			
 		</div>
 		<br>
 	</div>

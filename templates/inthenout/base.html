@@ -36,7 +36,7 @@
         <nav class="w3-left w3-sidenav w3-card-2 w3-mycolor w3-text-white w3-mobile w3-quarter" style="height:100%;">
             <h1 class="w3-logo w3-text-shadow w3-padding-16">inthen&#10162;ut</h1>
                 <div>
-                    <div>
+                    <div class="w3-padding-bottom">
                         <ul id="source" class="w3-opacity w3-margin-0 w3-padding-0">
                         <h1 class="w3-sidenavi w3-hover-black" onclick="w3.toggleShow('#sourcelinks');">source</h1>
                             <div id="sourcelinks">
@@ -51,8 +51,8 @@
                             </div>
                         </ul>
                     </div>
-                    <div>
-                        <ul id="collection" class="w3-opacity w3-margin-0 w3-padding-0 w3-border-top">
+                    <div class="w3-padding-bottom">
+                        <ul id="collection" class="w3-padding-top w3-opacity w3-margin-0 w3-padding-0 w3-border-top">
                         <h1 class="w3-sidenavi w3-hover-black" onclick="w3.toggleShow('#collectlinks');">collect</h1>
                             <div id="collectlinks" class="sidenavlinks">
                                 {% block sidebar_collect %}
@@ -67,7 +67,7 @@
                         </ul>
                     </div>
                     <div>
-                        <ul id="output" class="w3-opacity w3-margin-0 w3-padding-0 w3-border-top">
+                        <ul id="output" class="w3-opacity w3-margin-0 w3-padding-top w3-padding-0 w3-border-top">
                         <h1 class="w3-sidenavi w3-hover-black" onclick="w3.toggleShow('#outputlinks');">output</h1>
                             <div id="outputlinks">
                                 {% block sidebar_output %}

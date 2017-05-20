@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.forms import ModelForm
+from source.models import Source
 
 # Create your models here.
 
@@ -44,3 +45,14 @@ class User_Collection(models.Model):
 	
 	def __str__(self):
 		return str(self.collection) + "_" + str(self.user)
+		
+#Collection_Source Model For Collecting Data About Sources In A Collection 
+
+class Collection_Source(models.Model): 
+    collection          = models.ForeignKey(Collection, on_delete=models.CASCADE) 
+    source              = models.ForeignKey(Source, on_delete=models.CASCADE) 
+    date_added          = models.DateTimeField(auto_now_add=True) 
+    is_active           = models.BooleanField(default=True)      
+
+    def __str__(self): 
+        return str(self.collection) + " | " + str(self.source)

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Collection Sources{% endblock title %}
+
+{% block content %}
+<div class="w3-barnav w3-container">
+	<div>
+		{% for collection in collection %}
+		<h2 class="w3-homecategory w3-center w3-barnav">{{ collection.name }}<br><br></h2>
+		{% endfor %}
+		<div class="w3-padding"><b>Active Sources</b></div>
+		{% for sources in object_list %}
+		<div class="w3-padding-left w3-padding-top">{{ sources.source.name }}</div>
+		{% endfor %}
+	</div>
+<br>
+</div>
+{% endblock content %}

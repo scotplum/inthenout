@@ -34,6 +34,6 @@ def apicall(rss_flag, url, dict0_flag, sourcename, oauth_version, url_param):
 def navigationlinks(request):
 	#Get the object for this user and assign Source_User data
 	user_object = request.user
-	context['object_list'] = Source_User.objects.filter(user=user_object.id)
-	context['collection_list'] = User_Collection.objects.filter(user=user_object.id)
+	context['object_list'] = Source_User.objects.filter(user=user_object.id).filter(is_active=True)
+	context['collection_list'] = User_Collection.objects.filter(user=user_object.id).filter(is_active=True)
 	return context

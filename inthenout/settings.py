@@ -55,10 +55,10 @@ EMAIL_PORT = 1025
 INSTALLED_APPS = [
     'emailupdate',
     'source',
-	'collection',
     'home',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
+    'collection',
     'django.contrib.auth',
     'django.contrib.sites',
     'django.contrib.contenttypes',

@@ -41,8 +41,8 @@ def organization(request, organization):
 def detail(request, source_id):
 	#Assign variables
 	user_object = request.user
-	source_user_object = Source_User.objects.filter(user=user_object.id)
-	collection_object = User_Collection.objects.filter(user=user_object.id)
+	source_user_object = Source_User.objects.filter(user=user_object.id).filter(is_active=True)
+	collection_object = User_Collection.objects.filter(user=user_object.id).filter(is_active=True)
 	su_is_active = ""
 	source_variable = []
 	url_param = {}

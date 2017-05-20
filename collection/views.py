@@ -3,7 +3,7 @@ import requests, datetime, feedparser
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from source.models import Source, Source_Variable, Source_User
-from collection.models import Collection, Collection_Variable, User_Collection
+from collection.models import Collection, Collection_Variable, User_Collection, Collection_Source
 from django.contrib.auth.models import User
 from forms import CollectionForm, CustomCollectionDataForm
 from inthenout.utils import navigationlinks
@@ -46,6 +46,11 @@ def detail(request, collection_id):
 	collection_object = Collection.objects.filter(id=collection_id)
 	context['collection'] = collection_object
 	context['collection_variable'] = Collection_Variable.objects.filter(collection=collection_object)
+	context['collection_source'] = Collection_Source.objects.filter(collection=collection_object)
+	collsource_count = 0
+	for source in context['collection_source']:
+		collsource_count = collsource_count + 1
+	context['collsource_count'] = collsource_count
 	return render(request, 'collection/detail.html', context)
 
 @login_required
@@ -69,3 +74,11 @@ def customdata(request, collection_id):
 		context['form'] = form_class
 		return render(request, 'collection/customdata.html', context)	
 	return render(request, 'collection/customdata.html', context)
+	
+	
+@login_required
+def collectsource(request, collection_id):
+	context = navigationlinks(request)
+	collection_object = Collection.objects.filter(id=collection_id)
+	context['collection'] = collection_object
+	return render(request, 'collection/collectsource.html', context)

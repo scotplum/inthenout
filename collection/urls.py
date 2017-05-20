@@ -12,4 +12,6 @@ urlpatterns = [
 	url(r'^(?P<collection_id>[0-9]+)/$', views.detail, name='detail'),
 	# ex: /collection/1/customdata/
 	url(r'^(?P<collection_id>[0-9]+)/customdata/$', views.customdata, name='customdata'),
+	# ex: /collection/1/collectsource/
+	url(r'^(?P<collection_id>[0-9]+)/collectsource/$', views.collectsource, name='collectsource'),
 ]
