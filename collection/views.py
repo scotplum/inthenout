@@ -46,7 +46,7 @@ def detail(request, collection_id):
 	collection_object = Collection.objects.filter(id=collection_id)
 	context['collection'] = collection_object
 	context['collection_variable'] = Collection_Variable.objects.filter(collection=collection_object)
-	context['collection_source'] = Collection_Source.objects.filter(collection=collection_object)
+	context['collection_source'] = Collection_Source.objects.filter(collection=collection_object).filter(is_active=True)
 	collsource_count = 0
 	for source in context['collection_source']:
 		collsource_count = collsource_count + 1
@@ -78,7 +78,36 @@ def customdata(request, collection_id):
 	
 @login_required
 def collectsource(request, collection_id):
-	context = navigationlinks(request)
-	collection_object = Collection.objects.filter(id=collection_id)
-	context['collection'] = collection_object
+	context 						= navigationlinks(request)
+	user_object 					= request.user
+	collection_object 				= Collection.objects.filter(id=collection_id)
+	context['collection'] 			= collection_object
+	context['collection_source'] 	= Collection_Source.objects.filter(collection=collection_object).filter(is_active=True)
+	active_user_source 				= Source_User.objects.filter(user=user_object.id).filter(is_active=True).values_list('source_id',flat=True)
+	active_collection_source 		= Collection_Source.objects.filter(collection=collection_object).filter(is_active=True).values_list('source',flat=True)
+	unassigned_source 				= []
+	#Determine if a source is part of the collection
+	for source in active_user_source:
+		if source not in active_collection_source:
+			unassigned_source.append(source)
+	unassigned_source = Source.objects.filter(id__in=unassigned_source)
+	context['unassigned_source'] = unassigned_source
 	return render(request, 'collection/collectsource.html', context)
+	
+def collectsourceadd(request, collection_id, source_id):
+	coll_source_check = Collection_Source.objects.filter(collection=collection_id).filter(source=source_id).exists()
+	collection_object = Collection.objects.get(id=collection_id)
+	source_object = Source.objects.get(id=source_id)
+	if not coll_source_check:
+		coll_source = Collection_Source(source=source_object, collection=collection_object, date_added=timezone.now(), is_active=True)
+		coll_source.save()
+	else:
+		coll_source = Collection_Source.objects.get(collection_id=collection_object, source_id=source_object)
+		if coll_source.is_active: 
+			coll_source.is_active = False
+			coll_source.save()
+		else:
+			coll_source.is_active = True
+			coll_source.save()
+	redirecturl = '/collection/' + collection_id + '/collectsource/'
+	return redirect(redirecturl)

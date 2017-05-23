@@ -18,9 +18,7 @@
 			{% endif %}
 			{% if collsource_count > 0 %}
 				{% for source in collection_source|dictsort:"source.name" %}
-				{% for collection in collection %}
-				<div class="w3-sourcelinks w3-margin-left"><a href="/collection/{{ collection.id }}/collectsource/{{ source.source.id }}/">{{ source.source.name }}</a></div>
-				{% endfor %}
+				<div class="w3-sourcelinks w3-margin-left">{{ source.source.name }}</div>
 				{% endfor %}
 			{% else %}
 				<div class="w3-collectionval w3-margin-left">*A Source Has Not Yet Been Assigned To This Collection*</div>
@@ -32,11 +30,11 @@
 		<h2 class="w3-homecategory w3-padding-left w3-margin-top">Unassigned Sources</h2>
 		{% for sources in unassigned_source|dictsort:"name" %}
 		{% for collection in collection %}
-		<div class="w3-unassignedsources w3-padding-left w3-margin-left"><a href="/collection/{{ collection.id }}/collectsource/{{ sources.id }}/">{{ sources.name }}</a></div>
+		<div class="w3-unassignedsources w3-padding-left w3-margin-left"><a href="/collection/{{ collection.id }}/collectsource/{{ sources.id }}/">{{ sources.name }} &#10162;</a></div>
 		{% endfor %}
 		{% endfor %}
 		<br>
 	</div>
-</div><br>
-<div class="w3-center" style="color:red;"><h5>Click on a source to add or remove from the collection</h5></div>
+</div>
+<div class="w3-center"><h5>Click on a source to add or remove</h5></div>
 {% endblock content %}

@@ -1,10 +1,10 @@
 body {
     background-color: ghostwhite;
-    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    font-family: "Gill Sans Ultra", "Gill Sans", "Arial"; 
 }
 
 .w3-logo  { 
-    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    font-family: "Gill Sans Ultra", "Gill Sans", "Arial"; 
     letter-spacing: 3px;
     font-weight: bold;
     text-align: center;
@@ -13,7 +13,7 @@ body {
 }
 
 .w3-nav {
-    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    font-family: "Gill Sans Ultra", "Gill Sans", "Arial";  
     letter-spacing: 2px;
     font-size: 140%;
     margin-right: 3%;
@@ -27,16 +27,17 @@ body {
     border-bottom-width: thin;
     border-bottom-style: solid;
     border-bottom-color: #3369b8;   
-    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 	 
+    font-family: "Gill Sans Ultra", "Gill Sans", "Arial"; 	 
 }
 
 .w3-sidenavi {
-    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    font-family: "Gill Sans Ultra", "Gill Sans", "Arial"; 
     letter-spacing: 4px;
     font-size: 180%;
     font-weight: bold;
-    margin: 0 0;
-    text-align: center;
+    margin: 0 5%;
+    text-align: right;
+	padding: 0;
 }
 
 .w3-bold{
@@ -59,11 +60,13 @@ body {
 }
 
 .w3-sidenavlinks{
-    text-align: center;
+    text-align: right;
     list-style-type: none;
-    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    font-family: "Gill Sans Ultra", "Gill Sans", "Arial"; 
     font-size: 80%;
 	color: ghostwhite;
+	padding: 0;
+	margin: 0 5%;
 }
 
 .w3-hidden{
@@ -80,10 +83,22 @@ body {
     margin: 0;
     padding: 2px;
     list-style-type: none;
-    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    font-family: "Gill Sans Ultra", "Gill Sans", "Arial"; 
     letter-spacing: 1px;
     font-size: 85%;
     text-decoration: none;
+}
+
+.w3-unassignedsources{
+    text-align: left;
+    margin: 0;
+    padding: 2px;
+    list-style-type: none;
+    font-family: "Gill Sans Ultra", "Gill Sans", "Arial"; 
+    letter-spacing: 1px;
+    font-size: 85%;
+    text-decoration: none;
+	color: red;
 }
 
 .w3-homecategory{
@@ -97,7 +112,7 @@ body {
     margin: 0;
     padding: 2px;
     list-style-type: none;
-    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    font-family: "Gill Sans Ultra", "Gill Sans", "Arial"; 
     letter-spacing: 1px;
     font-size: 75%;
     text-decoration: none;
@@ -108,7 +123,7 @@ body {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    font-family: "Gill Sans Ultra", "Gill Sans", "Arial"; 
     letter-spacing: 0;
     font-size: 70%;
     text-decoration: none;
@@ -117,7 +132,7 @@ body {
 .w3-forms{
 	margin-left: 20%;
 	margin-right: 20%;
-    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    font-family: "Gill Sans Ultra", "Gill Sans", "Arial"; 
     letter-spacing: 2px;
     font-size: 70%;
 	color: #3369b8;
@@ -127,7 +142,7 @@ body {
 	text-align: right;
     padding-right: 1%;
     list-style-type: none;
-    font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma"; 
+    font-family: "Gill Sans Ultra", "Gill Sans", "Arial"; 
     letter-spacing: 1px;
     font-size: 65%;
     text-decoration: none;
@@ -137,7 +152,7 @@ body {
 
 .w3-collectionval{
 	text-align: left;
-	font-family: "Gill Sans Ultra", "Gill Sans", "Tahoma";
+	font-family: "Gill Sans Ultra", "Gill Sans", "Arial"; 
 	letter-spacing: 1px;
 	font-size: 65%;
 	color: red;
